@@ -1,0 +1,44 @@
+package eu.tutorials.rockpaperscissors
+
+fun main(){
+    var computerChoice = ""
+    var userChoice =""
+    userChoice= readln().lowercase()
+
+    while(userChoice!= "rock" || userChoice!= "paper" || userChoice!= "scissor"){
+
+        if(userChoice== "rock" || userChoice== "paper" || userChoice== "scissor") break
+
+        println("Please enter a valid input")
+        userChoice= readln().lowercase()
+    }
+    println("Player input is a valid input")
+
+    val randomNumber = (1..3).random()
+
+    when (randomNumber) {
+        1 -> {
+            computerChoice= "rock"
+        }
+        2 -> {
+            computerChoice= "paper"
+        }
+        else -> {
+            computerChoice= "scissor"
+        }
+    }
+    println(computerChoice)
+    val winner = when{
+        computerChoice==userChoice -> "Tie"
+        computerChoice== "rock" && userChoice== "paper" -> "Player"
+        computerChoice== "paper" && userChoice== "scissor" -> "Player"
+        computerChoice== "scissor" && userChoice== "rock" -> "Player"
+        else -> "Computer"
+    }
+    if(winner == "Tie"){
+        println("it's a Tie")
+    }
+    else{
+        println("$winner won!")
+    }
+}
