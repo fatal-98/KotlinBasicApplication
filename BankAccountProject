@@ -1,0 +1,32 @@
+package eu.tutorials.bankaccountprogramme
+
+class BankAccount(var AccountHolder : String , var balance : Double) {
+    private val transactionHistory = mutableListOf<String>()
+
+    fun deposit(amount : Double){
+        balance += amount
+        transactionHistory.add("$AccountHolder deposited $$amount")
+    }
+
+    fun withdraw(amount : Double){
+        if(amount <= balance){
+            balance-= amount
+            transactionHistory.add("$AccountHolder withdrawed $$amount")
+        }
+        else{
+            // we can not withdraw money
+            println("you don't have funds to withdraw $$amount")
+        }
+    }
+    fun acctBalance() : Double{
+//        println("your net balance is $balance")
+        return balance
+    }
+
+    fun displayTransactionHistory(){
+        println("Transaction history for $AccountHolder")
+        for(transaction in transactionHistory){
+            println(transaction)
+        }
+    }
+}
